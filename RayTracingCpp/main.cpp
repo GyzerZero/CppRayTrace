@@ -1,12 +1,21 @@
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+
 #include <iostream>
 #include "vec3.h"
+#include "camera.h"
 
 int main() {
-	vec3 a = { 1, 2, 3 };
-	vec3 c = a.normalize();
+	Camera camera;
 
-	std::cout << c.x << " " << c.y << " " << c.z << std::endl;
-	std::cout << dot(c, c) << std::endl;
+	camera.imageWidth = 1920;
+	camera.aspectRatio = 16.0 / 9.0;
+	camera.hFov = 90;
+	camera.focalLength = 1.0;
+	camera.lookAt = vec3{ 0, 0, 1 };
+	camera.position = vec3{ 0, 0, 0 };
+	camera.up = vec3{ 0, 1, 0 };
+
+	camera.renderScene();
 
 	return 0;
 }

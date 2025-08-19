@@ -7,8 +7,8 @@
       "RelativeMoniker": "D:0:0:{6503945C-3921-4789-B403-94019DC5FD13}|RayTracingCpp\\RayTracingCpp.vcxproj|solutionrelative:RayTracingCpp\\camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6503945C-3921-4789-B403-94019DC5FD13}|RayTracingCpp\\RayTracingCpp.vcxproj|C:\\Users\\gabri\\OneDrive\\Desktop\\RayTracingCpp\\RayTracingCpp\\vec3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{6503945C-3921-4789-B403-94019DC5FD13}|RayTracingCpp\\RayTracingCpp.vcxproj|solutionrelative:RayTracingCpp\\vec3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{6503945C-3921-4789-B403-94019DC5FD13}|RayTracingCpp\\RayTracingCpp.vcxproj|C:\\Users\\gabri\\OneDrive\\Desktop\\RayTracingCpp\\RayTracingCpp\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6503945C-3921-4789-B403-94019DC5FD13}|RayTracingCpp\\RayTracingCpp.vcxproj|solutionrelative:RayTracingCpp\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "vec3.h",
-              "DocumentMoniker": "C:\\Users\\gabri\\OneDrive\\Desktop\\RayTracingCpp\\RayTracingCpp\\vec3.h",
-              "RelativeDocumentMoniker": "RayTracingCpp\\vec3.h",
-              "ToolTip": "C:\\Users\\gabri\\OneDrive\\Desktop\\RayTracingCpp\\RayTracingCpp\\vec3.h",
-              "RelativeToolTip": "RayTracingCpp\\vec3.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-08-18T22:06:12.429Z"
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\gabri\\OneDrive\\Desktop\\RayTracingCpp\\RayTracingCpp\\main.cpp",
+              "RelativeDocumentMoniker": "RayTracingCpp\\main.cpp",
+              "ToolTip": "C:\\Users\\gabri\\OneDrive\\Desktop\\RayTracingCpp\\RayTracingCpp\\main.cpp",
+              "RelativeToolTip": "RayTracingCpp\\main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-19T00:41:55.08Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -40,7 +41,7 @@
               "RelativeDocumentMoniker": "RayTracingCpp\\camera.h",
               "ToolTip": "C:\\Users\\gabri\\OneDrive\\Desktop\\RayTracingCpp\\RayTracingCpp\\camera.h",
               "RelativeToolTip": "RayTracingCpp\\camera.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAQAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACgAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-08-18T22:02:47.656Z",
               "EditorCaption": ""
