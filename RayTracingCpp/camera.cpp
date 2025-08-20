@@ -1,6 +1,8 @@
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb_image_write.h"
+
 #include "camera.h"
 #include "color.h"
-#include "stb_image_write.h"
 
 void Camera::initialize()
 {
@@ -38,12 +40,11 @@ void Camera::renderScene()
 
         for (int i = 0; i < imageWidth; i++)
         {
-            auto r = double(i) / (imageWidth - 1);
-            auto g = double(j) / (imageHeight - 1);
-            auto b = 0.0;
+            ray currentRay = getRay(i, j);
+            vec3 pixelColor = rayColor(currentRay);
 
             int index = (j * imageWidth + i) * 3;
-            write_color(vec3{r, g, b}, pixelBuffer, index);
+            write_color(pixelColor, pixelBuffer, index);
         }
     }
 
@@ -51,3 +52,8 @@ void Camera::renderScene()
 
     std::cout << "Done.                                " << std::endl;
 };
+
+vec3 Camera::rayColor(ray r)
+{
+    return vec3{0.39, 0.58, 0.93}; // Cornflower blue
+}

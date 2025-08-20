@@ -3,7 +3,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "stbi_image_write.h"
+#include "ray.h"
 #include "vec3.h"
 
 #include <cmath>
@@ -55,6 +55,15 @@ class Camera
     vec3 pixel00Location;   // world-space center location of the first pixel when i=0, j=0
 
     void initialize();
+
+    inline ray getRay(int i, int j)
+    {
+        vec3 pixelCenter = pixel00Location + (i * pixelDeltaU) + (j * pixelDeltaV);
+        vec3 rayDirection = pixelCenter - position;
+        return ray{pixelCenter, rayDirection};
+    }
+
+    vec3 rayColor(ray r);
 };
 
 #endif
