@@ -38,7 +38,7 @@ struct vec3 {
 
 };
 
-// Allows reversed inputs (scalar * vec3 insead of vec3 * scalar)
+// Allows reversed inputs (scalar * vec3 instead of vec3 * scalar)
 inline vec3 operator*(double other, const vec3& v) {
 	return v * other;
 }
