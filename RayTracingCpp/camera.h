@@ -54,27 +54,7 @@ class Camera
     vec3 viewportUpperLeft; // world-space coordinate on the viewport (edge)
     vec3 pixel00Location;   // world-space center location of the first pixel when i=0, j=0
 
-    void initialize()
-    {
-        imageHeight = int(imageWidth / aspectRatio);
-        imageHeight = (imageHeight < 1) ? 1 : imageHeight;
-
-        viewportWidth = 2 * focalLength * std::tan(hFov / 2); // Set because of isosceles triangle with base viewport width, hieght focal length, and angle hfov
-        viewportHeight = viewportWidth / aspectRatio;
-
-        w = lookAt.normalize();
-        u = cross(w, up).normalize();
-        v = cross(u, w);
-
-        viewportU = vec3{viewportWidth, 0, 0};
-        viewportV = vec3{0, -viewportHeight, 0};
-
-        pixelDeltaU = viewportU / imageWidth;
-        pixelDeltaV = viewportV / imageHeight;
-
-        viewportUpperLeft = position - vec3{0, 0, focalLength} - viewportU / 2 - viewportV / 2;
-        pixel00Location = viewportUpperLeft + 0.5 * (pixelDeltaU + pixelDeltaV);
-    }
+    void initialize();
 };
 
 #endif
