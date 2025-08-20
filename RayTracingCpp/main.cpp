@@ -1,5 +1,5 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
-
+// Test comment
 #include "camera.h"
 #include "vec3.h"
 #include <iostream>
