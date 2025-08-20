@@ -7,7 +7,7 @@
 #include <cstdint>
 #include <vector>
 
-void write_color(vec3 color, std::vector<uint8_t> &pixelBuffer, int index)
+inline void write_color(vec3 color, std::vector<uint8_t> &pixelBuffer, int index)
 {
     double r = color.x;
     double g = color.y;
