@@ -1,2 +1,2 @@
 # CppRayTrace
-A beginner WIP ray tracer built in C++.
+A WIP beginner ray tracer built in C++.
