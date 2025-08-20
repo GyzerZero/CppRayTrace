@@ -1,3 +1,22 @@
+# Visual Studio cache
 .vs/
+*.vc.db
+*.VC.db
+*.suo
+*.user
+*.opendb
+*.ipch
+
+# Build output
 Debug/
-x64/Debug/
+Release/
+x64/
+[Bb]uild/
+*.exe
+*.pdb
+*.obj
+*.ilk
+*.log
+
+# Other
+*.cache
