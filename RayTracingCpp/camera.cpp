@@ -1,5 +1,6 @@
 #include "camera.h"
 #include "color.h"
+#include "stb_image_write.h"
 
 void Camera::initialize()
 {
