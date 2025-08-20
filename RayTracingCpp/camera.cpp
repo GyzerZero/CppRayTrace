@@ -1,12 +1,13 @@
 #include "camera.h"
+#include "color.h"
 
 void Camera::renderScene()
 {
+    std::cout << "Starting Render" << std::endl;
+
     initialize();
 
     std::vector<uint8_t> pixelBuffer(imageWidth * imageHeight * 3);
-
-    std::cout << "Starting Render" << std::endl;
 
     for (int j = 0; j < imageHeight; j++)
     {
@@ -18,16 +19,12 @@ void Camera::renderScene()
             auto g = double(j) / (imageHeight - 1);
             auto b = 0.0;
 
-            uint8_t ir = uint8_t(255.999 * r);
-            uint8_t ig = uint8_t(255.999 * g);
-            uint8_t ib = uint8_t(255.999 * b);
-
             int index = (j * imageWidth + i) * 3;
-            pixelBuffer[index + 0] = ir;
-            pixelBuffer[index + 1] = ig;
-            pixelBuffer[index + 2] = ib;
+            write_color(vec3{r, g, b}, pixelBuffer, index);
         }
     }
 
     stbi_write_png("image.png", imageWidth, imageHeight, 3, pixelBuffer.data(), imageWidth * 3);
+
+    std::cout << "Done.                                " << std::endl;
 };
