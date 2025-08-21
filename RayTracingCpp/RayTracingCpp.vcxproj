@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="color.h" />
+    <ClInclude Include="geometry.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="stb_image_write.h" />
     <ClInclude Include="vec3.h" />

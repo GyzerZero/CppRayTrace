@@ -3,6 +3,7 @@
 
 #include "camera.h"
 #include "color.h"
+#include "geometry.h"
 
 void Camera::initialize()
 {
@@ -55,5 +56,11 @@ void Camera::renderScene()
 
 vec3 Camera::rayColor(ray r)
 {
-    return vec3{0.39, 0.58, 0.93}; // Cornflower blue
+    triangle t1 = {vec3{0.5, 0.5, -1},
+                   vec3{0.5, -0.5, -1},
+                   vec3{0, -0.5, -1}};
+    if (t1.intersect(r))
+        return vec3{1, 1, 1};
+    else
+        return vec3{0, 0, 0}; // Cornflower blue
 }
