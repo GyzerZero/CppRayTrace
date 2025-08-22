@@ -35,6 +35,12 @@ void Camera::renderScene()
 
     std::vector<uint8_t> pixelBuffer(imageWidth * imageHeight * 3);
 
+    triangle t1 = {vec3{0.5, 0.5, -1},
+                   vec3{0.5, -0.5, -1},
+                   vec3{0, -0.5, -1}};
+
+    TriangleMesh m1 = {{&t1}, 1};
+
     for (int j = 0; j < imageHeight; j++)
     {
         std::cout << "Scanlines Remaining: " << imageHeight - j << " / " << imageHeight << "                \r";
@@ -42,7 +48,7 @@ void Camera::renderScene()
         for (int i = 0; i < imageWidth; i++)
         {
             ray currentRay = getRay(i, j);
-            vec3 pixelColor = rayColor(currentRay);
+            vec3 pixelColor = rayColor(currentRay, m1);
 
             int index = (j * imageWidth + i) * 3;
             write_color(pixelColor, pixelBuffer, index);
@@ -54,13 +60,11 @@ void Camera::renderScene()
     std::cout << "Done.                                " << std::endl;
 };
 
-vec3 Camera::rayColor(ray r)
+vec3 Camera::rayColor(ray r, TriangleMesh m1)
 {
-    triangle t1 = {vec3{0.5, 0.5, -1},
-                   vec3{0.5, -0.5, -1},
-                   vec3{0, -0.5, -1}};
-    if (t1.intersect(r))
-        return vec3{1, 1, 1};
+    double t = testRay(r, m1);
+    if (t > 0.0)
+        return vec3{1, 0, 0};
     else
-        return vec3{0, 0, 0}; // Cornflower blue
+        return vec3{0, 0, 0};
 }

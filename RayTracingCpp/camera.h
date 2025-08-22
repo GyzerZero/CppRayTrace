@@ -3,6 +3,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#include "geometry.h"
 #include "ray.h"
 #include "vec3.h"
 
@@ -63,7 +64,7 @@ class Camera
         return ray{pixelCenter, rayDirection};
     }
 
-    vec3 rayColor(ray r);
+    vec3 rayColor(ray r, TriangleMesh m1);
 };
 
 #endif

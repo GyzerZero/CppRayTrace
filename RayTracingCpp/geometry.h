@@ -5,45 +5,30 @@
 
 #include "ray.h"
 #include "vec3.h"
-#include <cstdbool>
 
 struct triangle
 {
     vec3 vertexA, vertexB, vertexC;
+    vec3 edge1, edge2;
+    vec3 normal;
 
-    // Möller–Trumbore method
-    bool intersect(ray r) const
-    {
-        vec3 edge1 = vertexB - vertexA;
-        vec3 edge2 = vertexC - vertexA;
-
-        vec3 h = cross(r.direction, edge2);
-
-        double determinant = dot(edge1, h);
-        double invdet = 1 / determinant;
-
-        vec3 s = r.origin - vertexA;
-
-        double beta = dot(s, h) * invdet;
-
-        vec3 q = cross(s, edge1);
-
-        double gamma = dot(r.direction, q) * invdet;
-
-        double t = dot(edge2, q) * invdet;
-
-        if (beta < 0 or beta > 1)
-            return false;
-
-        else if (gamma < 0 or beta + gamma > 1)
-            return false;
-
-        else if (t < 0)
-            return false;
-
-        else
-            return true;
-    }
+    triangle(const vec3 &a, const vec3 &b, const vec3 &c)
+        : vertexA(a), vertexB(b), vertexC(c),
+          edge1(b - a), edge2(c - a),
+          normal((cross(edge1, edge2).normalize())) {}
 };
+
+// Möller–Trumbore algotithm
+double intersect(ray &r, triangle &t);
+
+struct TriangleMesh
+{
+    triangle *mesh;
+    int triangle_count;
+
+    TriangleMesh(triangle *mesh, int triangle_count) : mesh(mesh), triangle_count(triangle_count) {}
+};
+
+double testRay(ray &r, TriangleMesh &TM);
 
 #endif
