@@ -36,7 +36,7 @@ double testRay(ray &r, TriangleMesh &TM)
     for (int i = 0; i < TM.triangle_count; i++)
     {
         distance = intersect(r, TM.mesh[i]);
-        if (distance < closest_distance) // Never less than -1
+        if (distance < closest_distance)
         {
             closest_triangle = i;
             closest_distance = distance;
