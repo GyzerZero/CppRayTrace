@@ -39,11 +39,11 @@ void Camera::renderScene()
 
     triangle t1 = {vec3{0.5, 0.5, -1},
                    vec3{0.5, -0.5, -1},
-                   vec3{0, -0.5, -1}};
+                   vec3{0, -0.5, -1}, vec3{1.0, 0, 0}};
 
-    triangle t2 = {vec3{0.5, 0.5, -1},
-                   vec3{0.5, -0.5, -1},
-                   vec3{-0.5, 0, -1}};
+    triangle t2 = {vec3{0.75, 0.5, -1.1},
+                   vec3{0.75, -0.5, -1.1},
+                   vec3{0.25, -0.5, -1.1}, vec3{0, 1.0, 0}};
 
     triangle *triangles[] = {&t1, &t2};
 
@@ -85,7 +85,7 @@ vec3 Camera::traceRay(ray &r, TriangleMesh &TM)
 
     if (closestTriangle >= 0)
     {
-        return vec3{1.0, 1.0, 1.0};
+        return TM.mesh[closestTriangle]->color;
     }
     else
     {
