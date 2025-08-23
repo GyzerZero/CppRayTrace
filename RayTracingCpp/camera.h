@@ -64,7 +64,7 @@ class Camera
         return ray{pixelCenter, rayDirection};
     }
 
-    vec3 rayColor(ray r, TriangleMesh m1);
+    vec3 traceRay(ray &r, TriangleMesh &TM);
 };
 
 #endif

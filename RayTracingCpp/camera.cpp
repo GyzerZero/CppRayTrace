@@ -5,6 +5,8 @@
 #include "color.h"
 #include "geometry.h"
 
+#include <cmath>
+
 void Camera::initialize()
 {
     imageHeight = int(imageWidth / aspectRatio);
@@ -39,7 +41,13 @@ void Camera::renderScene()
                    vec3{0.5, -0.5, -1},
                    vec3{0, -0.5, -1}};
 
-    TriangleMesh m1 = {{&t1}, 1};
+    triangle t2 = {vec3{0.5, 0.5, -1},
+                   vec3{0.5, -0.5, -1},
+                   vec3{-0.5, 0, -1}};
+
+    triangle *triangles[] = {&t1, &t2};
+
+    TriangleMesh m1 = {triangles, 2};
 
     for (int j = 0; j < imageHeight; j++)
     {
@@ -48,7 +56,7 @@ void Camera::renderScene()
         for (int i = 0; i < imageWidth; i++)
         {
             ray currentRay = getRay(i, j);
-            vec3 pixelColor = rayColor(currentRay, m1);
+            vec3 pixelColor = traceRay(currentRay, m1);
 
             int index = (j * imageWidth + i) * 3;
             write_color(pixelColor, pixelBuffer, index);
@@ -60,11 +68,27 @@ void Camera::renderScene()
     std::cout << "Done.                                " << std::endl;
 };
 
-vec3 Camera::rayColor(ray r, TriangleMesh m1)
+vec3 Camera::traceRay(ray &r, TriangleMesh &TM)
 {
-    double t = testRay(r, m1);
-    if (t > 0.0)
-        return vec3{1, 0, 0};
+    double maxDist = INFINITY;
+    int closestTriangle = -1;
+
+    for (int i = 0; i < TM.triangle_count; i++)
+    {
+        double distance = intersect(r, *TM.mesh[i]);
+        if (distance < maxDist && distance >= 0)
+        {
+            closestTriangle = i;
+            maxDist = distance;
+        }
+    }
+
+    if (closestTriangle >= 0)
+    {
+        return vec3{1.0, 1.0, 1.0};
+    }
     else
-        return vec3{0, 0, 0};
+    {
+        return vec3{0.0, 0.0, 0.0};
+    }
 }

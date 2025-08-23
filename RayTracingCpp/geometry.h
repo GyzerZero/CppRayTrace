@@ -23,12 +23,10 @@ double intersect(ray &r, triangle &t);
 
 struct TriangleMesh
 {
-    triangle *mesh;
+    triangle **mesh;
     int triangle_count;
 
-    TriangleMesh(triangle *mesh, int triangle_count) : mesh(mesh), triangle_count(triangle_count) {}
+    TriangleMesh(triangle **mesh, int triangle_count) : mesh(mesh), triangle_count(triangle_count) {}
 };
-
-double testRay(ray &r, TriangleMesh &TM);
 
 #endif

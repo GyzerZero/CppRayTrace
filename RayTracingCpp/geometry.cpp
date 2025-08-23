@@ -26,29 +26,3 @@ double intersect(ray &r, triangle &t)
     else
         return intersection;
 }
-
-double testRay(ray &r, TriangleMesh &TM)
-{
-    int closest_triangle;
-    int closest_distance = -1;
-    double distance;
-
-    for (int i = 0; i < TM.triangle_count; i++)
-    {
-        distance = intersect(r, TM.mesh[i]);
-        if (distance < closest_distance)
-        {
-            closest_triangle = i;
-            closest_distance = distance;
-        }
-    }
-
-    if (closest_distance > 0)
-    {
-        return distance;
-    }
-    else
-    {
-        return -1.0;
-    }
-}
