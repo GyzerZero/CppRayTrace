@@ -14,6 +14,20 @@ int main()
     camera.position = vec3{0, 0, 0};
     camera.up = vec3{0, 1, 0};
 
+    triangle t1 = {vec3{-0.5, 0.5, -1},
+                   vec3{-0.5, -0.5, -1},
+                   vec3{-1.0, -0.5, -1}, vec3{0, 1.0, 0}};
+
+    triangle t2 = {vec3{0.5, 0.5, -3},
+                   vec3{0.5, -0.5, -3},
+                   vec3{1.0, -0.5, -3}, vec3{1.0, 0, 1.0}};
+
+    triangle *triangles[] = {&t1, &t2};
+
+    world World = {triangles, 2};
+
+    camera.World = &World;
+
     camera.renderScene();
 
     return 0;

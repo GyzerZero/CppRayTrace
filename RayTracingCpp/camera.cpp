@@ -37,18 +37,6 @@ void Camera::renderScene()
 
     std::vector<uint8_t> pixelBuffer(imageWidth * imageHeight * 3);
 
-    triangle t1 = {vec3{0.5, 0.5, -1},
-                   vec3{0.5, -0.5, -1},
-                   vec3{0, -0.5, -1}, vec3{1.0, 0, 0}};
-
-    triangle t2 = {vec3{0.75, 0.5, -1.1},
-                   vec3{0.75, -0.5, -1.1},
-                   vec3{0.25, -0.5, -1.1}, vec3{0, 1.0, 0}};
-
-    triangle *triangles[] = {&t1, &t2};
-
-    TriangleMesh m1 = {triangles, 2};
-
     for (int j = 0; j < imageHeight; j++)
     {
         std::cout << "Scanlines Remaining: " << imageHeight - j << " / " << imageHeight << "                \r";
@@ -56,7 +44,7 @@ void Camera::renderScene()
         for (int i = 0; i < imageWidth; i++)
         {
             ray currentRay = getRay(i, j);
-            vec3 pixelColor = traceRay(currentRay, m1);
+            vec3 pixelColor = traceRay(currentRay, *World);
 
             int index = (j * imageWidth + i) * 3;
             write_color(pixelColor, pixelBuffer, index);
@@ -68,14 +56,14 @@ void Camera::renderScene()
     std::cout << "Done.                                " << std::endl;
 };
 
-vec3 Camera::traceRay(ray &r, TriangleMesh &TM)
+vec3 Camera::traceRay(ray &r, world &World)
 {
     double maxDist = INFINITY;
     int closestTriangle = -1;
 
-    for (int i = 0; i < TM.triangle_count; i++)
+    for (int i = 0; i < World.triangle_count; i++)
     {
-        double distance = intersect(r, *TM.mesh[i]);
+        double distance = intersect(r, *World.triangles[i]);
         if (distance < maxDist && distance >= 0)
         {
             closestTriangle = i;
@@ -85,7 +73,7 @@ vec3 Camera::traceRay(ray &r, TriangleMesh &TM)
 
     if (closestTriangle >= 0)
     {
-        return TM.mesh[closestTriangle]->color;
+        return World.triangles[closestTriangle]->color;
     }
     else
     {

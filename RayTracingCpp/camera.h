@@ -23,6 +23,8 @@ class Camera
     vec3 position;      // Camera position
     vec3 up;
 
+    world *World;
+
     void renderScene();
 
   private:
@@ -64,7 +66,7 @@ class Camera
         return ray{pixelCenter, rayDirection};
     }
 
-    vec3 traceRay(ray &r, TriangleMesh &TM);
+    vec3 traceRay(ray &r, world &World);
 };
 
 #endif

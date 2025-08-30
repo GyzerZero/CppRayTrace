@@ -27,15 +27,15 @@ double intersect(ray &r, triangle &t)
         return intersection;
 }
 
-double testRay(ray &r, TriangleMesh &TM)
+double testRay(ray &r, world &World)
 {
     int closest_triangle;
-    int closest_distance = -1;
+    double closest_distance = -1.0;
     double distance;
 
-    for (int i = 0; i < TM.triangle_count; i++)
+    for (int i = 0; i < World.triangle_count; i++)
     {
-        distance = intersect(r, *TM.mesh[i]);
+        distance = intersect(r, *World.triangles[i]);
         if (distance < closest_distance)
         {
             closest_triangle = i;
@@ -44,11 +44,7 @@ double testRay(ray &r, TriangleMesh &TM)
     }
 
     if (closest_distance > 0)
-    {
-        return distance;
-    }
+        return closest_distance;
     else
-    {
         return -1.0;
-    }
 }

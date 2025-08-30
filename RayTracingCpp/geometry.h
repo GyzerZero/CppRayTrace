@@ -23,12 +23,12 @@ struct triangle
 // Möller–Trumbore algotithm
 double intersect(ray &r, triangle &t);
 
-struct TriangleMesh
+struct world
 {
-    triangle **mesh;
+    triangle **triangles;
     int triangle_count;
 
-    TriangleMesh(triangle **mesh, int triangle_count) : mesh(mesh), triangle_count(triangle_count) {}
+    world(triangle **triangles, int triangle_count) : triangles(triangles), triangle_count(triangle_count) {}
 };
 
 #endif
