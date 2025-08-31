@@ -26,25 +26,3 @@ double intersect(ray &r, triangle &t)
     else
         return intersection;
 }
-
-double testRay(ray &r, world &World)
-{
-    int closest_triangle;
-    double closest_distance = -1.0;
-    double distance;
-
-    for (int i = 0; i < World.triangle_count; i++)
-    {
-        distance = intersect(r, *World.triangles[i]);
-        if (distance < closest_distance)
-        {
-            closest_triangle = i;
-            closest_distance = distance;
-        }
-    }
-
-    if (closest_distance > 0)
-        return closest_distance;
-    else
-        return -1.0;
-}

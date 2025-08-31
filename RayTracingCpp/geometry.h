@@ -23,12 +23,20 @@ struct triangle
 // Möller–Trumbore algotithm
 double intersect(ray &r, triangle &t);
 
+struct pointLight
+{
+    vec3 position;
+    double power;
+};
+
 struct world
 {
     triangle **triangles;
     int triangle_count;
 
-    world(triangle **triangles, int triangle_count) : triangles(triangles), triangle_count(triangle_count) {}
+    pointLight light;
+
+    world(triangle **triangles, int triangle_count, pointLight &light) : triangles(triangles), triangle_count(triangle_count), light(light) {}
 };
 
 #endif
